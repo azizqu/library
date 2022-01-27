@@ -1,17 +1,18 @@
-/*.table{*/
-/*   table-layout: fixed;*/
-/*}*/
+.table{
+   width: 385px;
+}
 
 .table td{
     white-space: normal;
     /*word-wrap: break-word;*/
     max-width: 10em;
     overflow: scroll;
+    font-size: small;
 }
 
-.table > thead{
-    width: max-content;
-}
+/*.table > thead{*/
+/*    width: max-content;*/
+/*}*/
 
 table{
     table-layout: fixed;
