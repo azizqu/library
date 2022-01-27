@@ -1,12 +1,10 @@
 .table{
-   width: 385px;
+   width: 365px;
+    overflow-x: hidden;
 }
 
 .table td{
-    white-space: normal;
-    /*word-wrap: break-word;*/
-    max-width: 10em;
-    overflow: scroll;
+    overflow-x: scroll;
     font-size: small;
 }
 
@@ -16,4 +14,14 @@
 
 table{
     table-layout: fixed;
+}
+
+@media screen and (min-width: 40em){
+    .table{
+        width: 100%;
+    }
+
+    .table td{
+        overflow-x: auto;
+    }
 }
