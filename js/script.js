@@ -38,7 +38,7 @@ class UI {
         <td>${book.pages}</td>
         <td>${book.isbn}</td>
         <td>${book.read}</td>
-        <td><a href="#" class="btn btn-danger btn-sm delete">X</td>
+        <td><a href="#" id="delBtn" class="btn btn-danger btn-sm delete">X</td>
         `;
         list.appendChild(row);
 
@@ -47,6 +47,7 @@ class UI {
     static deleteBook(el) {
         if (el.classList.contains('delete')){
             el.parentElement.parentElement.remove();
+            UI.showAlert('Book Removed!', 'success');
             // Store.removeBook()
         }
     }
@@ -163,7 +164,7 @@ document.querySelector('#book-list').addEventListener('click', (e)=>{
     // const titleRemoved = document.querySelector("tr > td:nth-child(1)").innerHTML;
 
     const isbnID = e.target.parentElement.previousElementSibling.previousElementSibling.textContent;
-    console.log(isbnID)
+    // console.log(isbnID)
 
     //Remove book from UI
     UI.deleteBook(e.target);
@@ -174,7 +175,7 @@ document.querySelector('#book-list').addEventListener('click', (e)=>{
 
 
     //show success message
-    UI.showAlert('Book Removed!', 'success');
+
 });
 
 
