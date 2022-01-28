@@ -1,5 +1,5 @@
 .table{
-   width: 365px;
+   width: 100%;
     overflow-x: hidden;
 }
 
@@ -8,9 +8,13 @@
     font-size: small;
 }
 
-/*.table > thead{*/
-/*    width: max-content;*/
-/*}*/
+.form-group{
+    line-height: 2.5em;
+    padding: 0.25em;
+}
+.btn{
+    width: 100%;
+}
 
 table{
     table-layout: fixed;
@@ -24,4 +28,5 @@ table{
     .table td{
         overflow-x: auto;
     }
+
 }
