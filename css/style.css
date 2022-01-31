@@ -6,6 +6,7 @@
 .table td{
     overflow-x: scroll;
     font-size: small;
+    display: block;
 }
 
 .form-group{
@@ -16,9 +17,15 @@
     width: 100%;
 }
 
-table{
-    table-layout: fixed;
+/*table{*/
+/*    table-layout: fixed;*/
+/*}*/
+
+.book-lbl{
+    font-weight: bolder;
+    font-size: 1.5rem;
 }
+
 
 @media screen and (min-width: 40em){
     .table{
