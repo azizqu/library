@@ -4,7 +4,7 @@
 }
 
 .table td{
-    overflow-x: scroll;
+    /*overflow-x: scroll;*/
     font-size: small;
     display: block;
 }

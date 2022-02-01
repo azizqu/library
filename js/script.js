@@ -32,8 +32,9 @@ class UI {
         const list = document.getElementById('book-list');
 
         const row = document.createElement('tr');
+        row.classList.add('book-row');
+        row.setAttribute("data-isbn", book.isbn);
         row.innerHTML = `
-
         <td>
         <div class="book-lbl">Title</div>
         <div class="book-val">
@@ -53,7 +54,7 @@ class UI {
         </td>
         
         <td>
-        <div class="book-lbl">ISBN</div>
+        <div class="book-lbl" data-isbn="${book.isbn}">ISBN</div>
         <div class="book-val">
         ${book.isbn}
         </td>
@@ -64,7 +65,7 @@ class UI {
         ${book.read}
         </td>
         
-        <td><a href="#" id="delBtn" class="btn btn-danger btn-sm delete">X</td>
+        <td><a href="#" id="delBtn" class="btn btn-danger btn-sm delete" data-isbn="${book.isbn}">X</td>
         `;
         list.appendChild(row);
 
@@ -72,7 +73,11 @@ class UI {
 
     static deleteBook(el) {
         if (el.classList.contains('delete')) {
-            el.parentElement.parentElement.remove();
+            const isbn = el.dataset.isbn;
+            // el.parentElement.parentElement.remove();
+            document.querySelector(`.book-row[data-isbn="${isbn}"]`)
+                .remove();
+
             UI.showAlert('Book Removed!', 'success');
             // Store.removeBook()
         }
@@ -187,27 +192,38 @@ document.querySelector('#book-form').addEventListener('submit', (e) => {
 
 
 //Event: Remove a Book
-document.querySelector('#book-list').addEventListener('click', (e) => {
-    // const titleRemoved = document.querySelector("tr > td:nth-child(1)").innerHTML;
-    // if(e.target === )
-    if(e.target === document.querySelector('#delBtn')){
-        console.log(e.target)
-    }
-    const deleteBtn = document.getElementById('delBtn');
-    console.log(deleteBtn);
+    const bookList = document.querySelector('#book-list');
+    bookList.addEventListener('click', (e) => {
+    // if(e.target === document.getElementById('delBtn')){
+    //
+    // }
+    // console.log(e.target);
 
-    const isbnID = e.target.parentElement.previousElementSibling.previousElementSibling.textContent;
-    console.log(isbnID)
+    // const deleteBtn = document.getElementById('delBtn');
+    // console.log(deleteBtn);
+
+
+
+    // if(e.target === )
+
+
+    // const isbnID = e.target.parentElement.previousElementSibling.previousElementSibling.textContent;
+    const isbnKey = e.target.dataset.isbn;
+    console.log(isbnKey);
+
+    // const isbnID = document.querySelector()
+    // console.log(isbnID);
 
     //Remove book from UI
     UI.deleteBook(e.target);
 
     //Remove book from storage
 
-    Store.removeBook(isbnID);
+    Store.removeBook(isbnKey);
 
 
     //show success message
+
 
 });
 
@@ -230,4 +246,6 @@ function addBookToLibrary() {
 
 addBookToLibrary();
 // console.log(theHobbit.info())
-console.log(myLibrary)
+// console.log(myLibrary)
+
+console.log(document.querySelectorAll('#book-list'));
